@@ -28,7 +28,7 @@ async function departmentGet() {
     database: "employee_db",
   });
 
-  const [departmentArray, fields] = await db.execute("SELECT id, name FROM department");
+  let departmentArray = await db.execute("SELECT id, name FROM department");
   return departmentArray;
 }
 

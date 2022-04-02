@@ -29,7 +29,7 @@ async function rolesGet() {
     database: "employee_db",
   });
 
-  const [roleArray, fields] = await db.execute("SELECT id, title FROM role");
+  let roleArray = await db.execute("SELECT id, title FROM role");
   return roleArray;
 }
 
