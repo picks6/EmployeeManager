@@ -11,6 +11,10 @@
   
 # Employee Manager
 Please see a live demonstration of the application
+
+https://user-images.githubusercontent.com/95437073/161393940-dab12efd-e995-45f6-b1ab-e31f47997684.mp4
+
+
 # Description
 A CLI SQL database to manage a company's employees, roles, departments, and salaries
 # Installation
