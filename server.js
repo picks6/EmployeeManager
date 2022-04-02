@@ -1,5 +1,5 @@
-const Prompt = require("./lib/Prompt");
+const menu = require("./lib/menu");
 
-let run = new Prompt();
+let run = new menu();
 
 run.start();

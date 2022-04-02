@@ -1,7 +1,7 @@
 const inquirer = require("inquirer");
 const cTable = require("console.table");
 const {getRoleId} = require("./role");
-const Prompt = require("../lib/Prompt");
+const menu = require("../lib/menu");
 
 async function selectEmp() {
   const mysql = require("mysql2/promise");
@@ -35,7 +35,7 @@ async function employeeGet() {
   return empArr;
 }
 
-async function insertEmp(first_name, last_name, roleId, managerId) {
+async function addEmployee(first_name, last_name, roleId, managerId) {
   const mysql = require("mysql2/promise");
 
   const db = await mysql.createConnection({
@@ -71,13 +71,13 @@ async function getManagerId(first_name, last_name) {
 async function employeeQuery(response) {
   getRoleId(response.role).then((rId) => {
     if (response.manager.split(" ")[0] === "No") {
-      insertEmp(response.first_name, response.last_name, rId, null);
+      addEmployee(response.first_name, response.last_name, rId, null);
     } else {
       getManagerId(
         response.manager.split(" ")[0],
         response.manager.split(" ")[0]
       ).then((mId) => {
-        insertEmp(response.first_name, response.last_name, rId, mId);
+        addEmployee(response.first_name, response.last_name, rId, mId);
       });
     }
   });
@@ -159,7 +159,7 @@ async function employeeDelete(response) {
 module.exports = {
   selectEmp,
   employeeGet,
-  insertEmp,
+  addEmployee,
   getManagerId,
   employeeQuery,
   employeeRole,
